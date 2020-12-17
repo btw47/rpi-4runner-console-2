@@ -8,6 +8,7 @@ Bluetooth::Bluetooth(QObject *parent) : QObject(parent)
     qDebug() << "INIT??";
 
     this->getLocalDeviceInformation();
+    this->startDeviceDiscovery();
 }
 
 QString Bluetooth::userName()
@@ -52,7 +53,7 @@ void Bluetooth::startDeviceDiscovery()
 
 void Bluetooth::deviceDiscovered(const QBluetoothDeviceInfo &device)
 {
-    if (device.name() == "4Runner") {
+    if (device.name() == "4RUNNER") {
         qDebug() << "Found the 4Runner: " << device.name() << device.rssi() << device.coreConfigurations() << "(" << device.address().toString() << ")";
 
         socket = new QBluetoothSocket(QBluetoothServiceInfo::RfcommProtocol, this);
@@ -60,7 +61,7 @@ void Bluetooth::deviceDiscovered(const QBluetoothDeviceInfo &device)
         connect(socket, SIGNAL(error(QBluetoothSocket::SocketError)), this, SLOT(socketError(QBluetoothSocket::SocketError)));
         connect(socket,SIGNAL(connected()), this, SLOT(socketConnected()));
         connect(socket, SIGNAL(readyRead()), this, SLOT(socketRead()));
-        connect(socket, SIGNAL(stateChanged(QBluetoothSocekt::SocketState)), this, SLOT(socketStateChanged()));
+        connect(socket, SIGNAL(stateChanged(QBluetoothSocket::SocketState)), this, SLOT(socketStateChanged()));
     }
     else {
         qDebug() << "found other bt device";
