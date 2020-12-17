@@ -31,6 +31,9 @@ ApplicationWindow {
             element2.onToggled: {
                 bt.toggleRelayC();
             }
+            element7.onToggled: {
+                bt.toggleRelayD();
+            }
         }
     }
 
