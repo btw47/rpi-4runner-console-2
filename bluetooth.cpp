@@ -45,10 +45,11 @@ void Bluetooth::startDeviceDiscovery()
 {
     qDebug() << "starting device discovery";
 
-    QBluetoothDeviceDiscoveryAgent *discoveryAgent = new QBluetoothDeviceDiscoveryAgent(this);
+    discoveryAgent = new QBluetoothDeviceDiscoveryAgent(this);
     connect(discoveryAgent, SIGNAL(deviceDiscovered(QBluetoothDeviceInfo)), this, SLOT(deviceDiscovered(QBluetoothDeviceInfo)));
 
     discoveryAgent->start();
+    discoveryAgent->stop();
 }
 
 void Bluetooth::deviceDiscovered(const QBluetoothDeviceInfo &device)
@@ -62,6 +63,8 @@ void Bluetooth::deviceDiscovered(const QBluetoothDeviceInfo &device)
         connect(socket,SIGNAL(connected()), this, SLOT(socketConnected()));
         connect(socket, SIGNAL(readyRead()), this, SLOT(socketRead()));
         connect(socket, SIGNAL(stateChanged(QBluetoothSocket::SocketState)), this, SLOT(socketStateChanged()));
+
+        discoveryAgent->stop();
     }
     else {
         qDebug() << "found other bt device";

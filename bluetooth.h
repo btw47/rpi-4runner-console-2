@@ -39,6 +39,7 @@ private:
     void startDeviceDiscovery();
 
     QBluetoothSocket *socket;
+    QBluetoothDeviceDiscoveryAgent *discoveryAgent;
 
     int relayAStatus = 0;
     int relayBStatus = 0;

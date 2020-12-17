@@ -5,6 +5,8 @@ import com.hqconsole.bluetooth 1.0
 
 ApplicationWindow {
     visible: true
+    visibility: "FullScreen"
+    flags: Qt.FramelessWindowHint | Qt.Window
     width: 1024
     height: 600
     title: qsTr("4Runner HQ")

@@ -21,7 +21,7 @@ Page {
         anchors.left: parent.left
         anchors.leftMargin: 600
         anchors.top: parent.top
-        anchors.topMargin: 120
+        anchors.topMargin: 150
 
         Row {
             Text {
@@ -50,7 +50,7 @@ Page {
         anchors.right: parent.right
         anchors.rightMargin: 600
         anchors.top: parent.top
-        anchors.topMargin: 120
+        anchors.topMargin: 150
         Row {
             Text {
                 id: element3
@@ -80,11 +80,14 @@ Page {
     Text {
         id: element5
         x: 469
-        y: 70
         width: 89
         height: 21
         color: "#d3d7cf"
         text: qsTr("Exterior")
+        anchors.top: parent.top
+        anchors.topMargin: 85
+        anchors.horizontalCenterOffset: 0
+        anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: 24
     }
 
@@ -96,6 +99,8 @@ Page {
         height: 21
         color: "#d3d7cf"
         text: qsTr("Interior")
+        anchors.verticalCenterOffset: 50
+        anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenterOffset: 1
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: 24
@@ -105,6 +110,8 @@ Page {
         id: slider
         x: 201
         y: 357
+        anchors.verticalCenterOffset: 150
+        anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenterOffset: 1
         anchors.horizontalCenter: parent.horizontalCenter
         value: 0
@@ -113,7 +120,7 @@ Page {
 
 /*##^##
 Designer {
-    D{i:2;anchors_x:649;anchors_y:105}D{i:8;anchors_y:114}
+    D{i:2;anchors_x:649;anchors_y:105}D{i:8;anchors_y:114}D{i:15;anchors_y:70}
 }
 ##^##*/
 
