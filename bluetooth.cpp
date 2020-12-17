@@ -117,3 +117,54 @@ void Bluetooth::socketConnected()
     qDebug() << "Socket has been connected!! it's what you want really";
 }
 
+void Bluetooth::toggleRelayA()
+{
+    relayAStatus = !relayAStatus;
+    qDebug() << "sending relay A a status of: " << relayAStatus;
+
+    if (relayAStatus) {
+        socket->write("a");
+    }
+    else {
+        socket->write("b");
+    }
+}
+
+void Bluetooth::toggleRelayB()
+{
+    relayBStatus = !relayBStatus;
+    qDebug() << "sending relay B a status of: " << relayBStatus;
+
+    if (relayBStatus) {
+        socket->write("c");
+    }
+    else {
+        socket->write("d");
+    }
+}
+
+void Bluetooth::toggleRelayC()
+{
+    relayCStatus = !relayCStatus ;
+    qDebug() << "sending relay C a status of: " << relayCStatus ;
+
+    if (relayCStatus) {
+        socket->write("e");
+    }
+    else {
+        socket->write("f");
+    }
+}
+
+void Bluetooth::toggleRelayD()
+{
+    relayDStatus = !relayDStatus;
+    qDebug() << "sending relay D a status of: " << relayDStatus;
+
+    if (relayDStatus) {
+        socket->write("g");
+    }
+    else {
+        socket->write("h");
+    }
+}

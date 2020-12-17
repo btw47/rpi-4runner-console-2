@@ -22,6 +22,15 @@ ApplicationWindow {
         }
 
         Page2Form {
+            element.onToggled: {
+                bt.toggleRelayA();
+            }
+            element1.onToggled: {
+                bt.toggleRelayB();
+            }
+            element2.onToggled: {
+                bt.toggleRelayC();
+            }
         }
     }
 

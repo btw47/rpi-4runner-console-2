@@ -17,7 +17,10 @@ public:
 
     QString userName();
     void setUserName(const QString &userName);
-
+    Q_INVOKABLE void toggleRelayA();
+    Q_INVOKABLE void toggleRelayB();
+    Q_INVOKABLE void toggleRelayC();
+    Q_INVOKABLE void toggleRelayD();
 signals:
     void userNameChanged();
 
