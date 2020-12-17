@@ -17,6 +17,7 @@ QString Bluetooth::userName()
 
 void Bluetooth::setUserName(const QString &userName)
 {
+    qDebug() << "Set user name: " << &userName;
     return;
 }
 
@@ -54,9 +55,64 @@ void Bluetooth::deviceDiscovered(const QBluetoothDeviceInfo &device)
     if (device.name() == "4Runner") {
         qDebug() << "Found the 4Runner: " << device.name() << device.rssi() << device.coreConfigurations() << "(" << device.address().toString() << ")";
 
-
+        socket = new QBluetoothSocket(QBluetoothServiceInfo::RfcommProtocol, this);
+        socket->connectToService(QBluetoothAddress(device.address()), QBluetoothUuid(QBluetoothUuid::SerialPort));
+        connect(socket, SIGNAL(error(QBluetoothSocket::SocketError)), this, SLOT(socketError(QBluetoothSocket::SocketError)));
+        connect(socket,SIGNAL(connected()), this, SLOT(socketConnected()));
+        connect(socket, SIGNAL(readyRead()), this, SLOT(socketRead()));
+        connect(socket, SIGNAL(stateChanged(QBluetoothSocekt::SocketState)), this, SLOT(socketStateChanged()));
     }
     else {
         qDebug() << "found other bt device";
     }
 }
+
+void Bluetooth::socketRead()
+{
+
+}
+
+void Bluetooth::socketDisconnected()
+{
+    qDebug() << "Socket disconnected";
+    socket -> deleteLater();
+}
+
+void Bluetooth::socketError(QBluetoothSocket::SocketError error)
+{
+    qDebug() << "Socket error: " << error;
+}
+
+void Bluetooth::socketStateChanged()
+{
+    int socketState = socket->state();
+    qDebug() << "Socket state changed: " << socketState;
+
+    if (socketState == QAbstractSocket::UnconnectedState) {
+        qDebug() << "UNCONNNECTED";
+    }
+    else if (socketState == QAbstractSocket::HostLookupState) {
+        qDebug() << "HOST LOOKUP";
+    }
+    else if (socketState == QAbstractSocket::ConnectingState) {
+        qDebug() << "CONNECTING";
+    }
+    else if (socketState == QAbstractSocket::ConnectedState) {
+        qDebug() << "CONNECTED!!";
+    }
+    else if (socketState == QAbstractSocket::BoundState) {
+        qDebug() << "BOUND";
+    }
+    else if (socketState == QAbstractSocket::ClosingState) {
+        qDebug() << "CLOSING";
+    }
+    else if (socketState == QAbstractSocket::ListeningState) {
+        qDebug() << "LISTENING";
+    }
+}
+
+void Bluetooth::socketConnected()
+{
+    qDebug() << "Socket has been connected!! it's what you want really";
+}
+

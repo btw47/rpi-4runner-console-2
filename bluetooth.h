@@ -21,11 +21,26 @@ public:
 signals:
     void userNameChanged();
 
+private slots:
+    void deviceDiscovered(const QBluetoothDeviceInfo &device);
+
+    void socketConnected();
+    void socketRead();
+    void socketDisconnected();
+    void socketError(QBluetoothSocket::SocketError error);
+    void socketStateChanged();
+
 private:
     QString m_userName;
     void getLocalDeviceInformation();
     void startDeviceDiscovery();
-    void deviceDiscovered(const QBluetoothDeviceInfo &device);
+
+    QBluetoothSocket *socket;
+
+    int relayAStatus = 0;
+    int relayBStatus = 0;
+    int relayCStatus = 0;
+    int relayDStatus = 0;
 };
 
 #endif // BLUETOOTH_H
