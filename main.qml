@@ -5,9 +5,9 @@ import com.hqconsole.bluetooth 1.0
 
 ApplicationWindow {
     visible: true
-    width: 640
-    height: 480
-    title: qsTr("Tabs")
+    width: 1024
+    height: 600
+    title: qsTr("4Runner HQ")
 
     Bluetooth {
         id: bt
@@ -42,7 +42,7 @@ ApplicationWindow {
         currentIndex: swipeView.currentIndex
 
         TabButton {
-            text: qsTr("Dashboard")
+            text: qsTr("Home")
         }
         TabButton {
             text: qsTr("Lights")

@@ -3,8 +3,8 @@ import QtQuick.Controls 2.4
 
 Page {
     id: page
-    width: 600
-    height: 400
+    width: 1024
+    height: 600
     property alias element7: element7
     property alias slider: slider
     property alias element2: element2
@@ -12,14 +12,16 @@ Page {
     property alias element: element
 
     header: Label {
-        text: qsTr("Lights")
+        //        text: qsTr("Lights")
         font.pixelSize: Qt.application.font.pixelSize * 2
         padding: 10
     }
 
     Column {
-        x: 330
-        y: 50
+        anchors.left: parent.left
+        anchors.leftMargin: 600
+        anchors.top: parent.top
+        anchors.topMargin: 120
 
         Row {
             Text {
@@ -44,8 +46,11 @@ Page {
     }
 
     Column {
-        x: 112
-        y: 50
+        x: 269
+        anchors.right: parent.right
+        anchors.rightMargin: 600
+        anchors.top: parent.top
+        anchors.topMargin: 120
         Row {
             Text {
                 id: element3
@@ -74,8 +79,8 @@ Page {
 
     Text {
         id: element5
-        x: 256
-        y: 6
+        x: 469
+        y: 70
         width: 89
         height: 21
         color: "#d3d7cf"
@@ -86,11 +91,12 @@ Page {
     Text {
         id: element6
         x: 256
-        y: 192
+        y: 312
         width: 89
         height: 21
         color: "#d3d7cf"
         text: qsTr("Interior")
+        anchors.horizontalCenterOffset: 1
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: 24
     }
@@ -98,8 +104,8 @@ Page {
     Slider {
         id: slider
         x: 201
-        y: 237
-        anchors.horizontalCenterOffset: 0
+        y: 357
+        anchors.horizontalCenterOffset: 1
         anchors.horizontalCenter: parent.horizontalCenter
         value: 0
     }
@@ -107,7 +113,7 @@ Page {
 
 /*##^##
 Designer {
-    D{i:2;anchors_x:353;anchors_y:33}
+    D{i:2;anchors_x:649;anchors_y:105}D{i:8;anchors_y:114}
 }
 ##^##*/
 

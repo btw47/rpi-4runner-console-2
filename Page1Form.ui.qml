@@ -2,8 +2,8 @@ import QtQuick 2.11
 import QtQuick.Controls 2.4
 
 Page {
-    width: 600
-    height: 400
+    width: 1024
+    height: 600
     property alias element: element
 
     header: Label {
@@ -14,8 +14,8 @@ Page {
 
     Text {
         id: element
-        x: 210
-        y: 120
+        x: 422
+        y: 193
         width: 180
         color: "#d3d7cf"
         text: qsTr("1:15 PM")
@@ -24,8 +24,8 @@ Page {
 
     Text {
         id: element1
-        x: 183
-        y: 192
+        x: 395
+        y: 265
         color: "#d3d7cf"
         text: qsTr("December 15th, 2020")
         font.pixelSize: 24
